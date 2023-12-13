@@ -4,10 +4,11 @@ import com.wah.kr2.ShipThread
 import java.io.File
 
 fun main() {
+    Thread.currentThread().contextClassLoader.loadClass("com.wah.kr2.DockPoolSynchronized")
+
     val dockPool = DockPoolLock
 
     for (i in 0 until 100) {
-        Thread.currentThread().contextClassLoader.loadClass("com.wah.kr2.DockPoolSynchronized")
         ShipThread(i, dockPool).start()
     }
 
